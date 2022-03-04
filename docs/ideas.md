@@ -21,15 +21,15 @@ Our application is based on a Facebook group where many users share or request a
 Any person can make a profile, whether they are interested in listing a ride they are providing or seek to join a ride.
 They must have a UMass account.
 * **Home Page**
-Display of all rides for the current day: Each ride will have a summary of important data for that ride (name of driver, destination, ect.) from which the user can select to open another page with more information. 
+Display of all rides for the current day: Each ride will have a summary of important data for that ride (name of driver, destination, etc.) from which the user can select to open another page with more information.   
 Button to add ride: This will open a page with a form to fill out information about the ride the user wants to provide. Some fields will be optional while some will be required.
-Option to change day you are looking at rides open for
-Find an open ride based on a specific location+: Search features for # seats, gender of driver/passengers, location, dates(calendar) etc.
+Option to change day you are looking at rides open for.  
+Find an open ride based on a specific location: Search features for # seats, gender of driver/passengers, location, dates(calendar) etc.
 * **Ride Info Page (One for each open ride)**
-Includes all information relating to the ride, including total distance, number of open rides, ect.
-Information about the driver and a list of reviews
-Option to request to join the ride: Results in the driver receiving their contact information so they can reach out to the person requesting
-We will have a Map at the bottom of the page with a summary of the route of the trip
+Includes all information relating to the ride, including total distance, cost, etc.  
+Information about the driver and a list of reviews  
+Option to request to join the ride: Results in the driver receiving their contact information so they can reach out to the person requesting  
+We will have a Map at the bottom of the page with a summary of the route of the trip  
 
 
 
