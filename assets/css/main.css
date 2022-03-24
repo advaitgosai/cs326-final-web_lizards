@@ -1,0 +1,166 @@
+
+h2 {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-align: left;
+    font-size: x-large;
+    padding-left: 3em;
+}
+
+.login-form {
+    width: 340px;
+    margin: 50px auto;
+  	font-size: 15px;
+}
+.login-form form {
+    margin-bottom: 15px;
+    background: #f7f7f7;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+.login-form h2 {
+    margin: 0 0 15px;
+}
+/* .form-control, .btn {
+    min-height: 38px;
+    border-radius: 2px;
+} */
+.btn {        
+    font-size: 15px;
+    font-weight: bold;
+}
+
+  /* table {
+    border-collapse: separate;
+    border-spacing: 0 15px;
+  }
+  
+  th {
+    color: white;
+  }
+
+  tr {
+    background-color:lightblue;
+  }
+  
+  th,
+  td {
+    width: 150px;
+    text-align: center;
+    padding: 5px;
+  } */
+
+  .container {
+    margin: auto;
+    /* padding-top: 50px;
+    padding-bottom: 50px; */
+  }
+  
+  /* Custom Table Theme */
+  table {
+    table-layout: fixed;
+  }
+  .table>thead>tr>th,
+  .table>tbody>tr>th,
+  .table>tfoot>tr>th,
+  .table>thead>tr>td,
+  .table>tbody>tr>td,
+  .table>tfoot>tr>td {
+    border-color: #f2f2f2; /* matches body/section background color */
+    border-top-width: 2px;
+    padding: 15px;
+  }
+  table {
+    background-color:lightsteelblue;
+  }
+  table tr td:first-child {
+    vertical-align: middle;
+    font-size: 18px;
+    /* text-transform: uppercase; */
+  }
+  table th {
+    color: rgba(255,255,255,0.9);
+  }
+  /* table tr td {
+    background-color: rgba(255,255,255,0.65);
+  }
+  table tr td:nth-child(3) {
+    background-color: rgba(255,255,255,0.735);
+  }
+  table tr td:last-child {
+    background-color: rgba(255,255,255,0.8);
+  } */
+  table ul {
+    padding-left: 17px;
+    list-style-type: circle;
+  }
+  table tr td:first-child {
+    background-color: transparent;
+    /* color: #fff; */
+  }
+  
+  @media screen and (max-width: 678px) {
+    tbody td {
+      text-align: left;
+    }
+    tbody td:before {
+      font-weight: 700;
+      text-align: left;
+    }
+  }
+  @media screen and (min-width: 679px) {
+    /* For Faux rounded tr corners */
+    table th,
+    table td {
+      position: relative;
+    }
+    table tr th:first-child:before,
+    table tr th:first-child:after,
+    table tr th:last-child:before,
+    table tr th:last-child:after,
+    table tr td:first-child:before,
+    table tr td:first-child:after,
+    table tr td:last-child:before,
+    table tr td:last-child:after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 40px;
+      background-color: transparent;
+      position: absolute;
+    }
+    /* border colors match the previously defined border colors and background/section color */
+    table tr th:first-child:before,
+    table tr td:first-child:before {
+      top: -2px;
+      left: -2px;
+      border-top: 2px solid #f2f2f2;
+      border-left: 2px solid #f2f2f2;
+      border-top-left-radius: 6px;
+    }
+    table tr th:first-child:after,
+    table tr td:first-child:after {
+      bottom: -2px;
+      left: -2px;
+      border-bottom: 2px solid #f2f2f2;
+      border-left: 2px solid #f2f2f2;
+      border-bottom-left-radius: 6px;
+    }
+    table tr th:last-child:before,
+    table tr td:last-child:before {
+      top: -2px;
+      right: -2px;
+      border-top: 2px solid #f2f2f2;
+      border-right: 2px solid #f2f2f2;
+      border-top-right-radius: 6px;
+    }
+    table tr th:last-child:after,
+    table tr td:last-child:after {
+      bottom: -2px;
+      right: -2px;
+      border-bottom: 2px solid #f2f2f2;
+      border-right: 2px solid #f2f2f2;
+      border-bottom-right-radius: 6px;
+    }
+    /* end tr corners */
+  }
+
