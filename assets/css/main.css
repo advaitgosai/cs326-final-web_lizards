@@ -27,6 +27,8 @@ h2 {
 .btn {        
     font-size: 15px;
     font-weight: bold;
+    background-color: maroon;
+    border-color: maroon;
 }
 
   /* table {
@@ -58,6 +60,8 @@ h2 {
   /* Custom Table Theme */
   table {
     table-layout: fixed;
+    background-color: #D3D3D3;
+    font-size: large;
   }
   .table>thead>tr>th,
   .table>tbody>tr>th,
@@ -65,16 +69,13 @@ h2 {
   .table>thead>tr>td,
   .table>tbody>tr>td,
   .table>tfoot>tr>td {
-    border-color: #f2f2f2; /* matches body/section background color */
-    border-top-width: 2px;
+    border-color: white; /* matches body/section background color */
+    border-bottom-width: 10px;
     padding: 15px;
-  }
-  table {
-    background-color:lightsteelblue;
+    
   }
   table tr td:first-child {
     vertical-align: middle;
-    font-size: 18px;
     /* text-transform: uppercase; */
   }
   table th {
@@ -82,7 +83,7 @@ h2 {
   }
   /* table tr td {
     background-color: rgba(255,255,255,0.65);
-  }
+  } 
   table tr td:nth-child(3) {
     background-color: rgba(255,255,255,0.735);
   }
