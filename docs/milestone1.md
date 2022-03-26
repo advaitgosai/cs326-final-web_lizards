@@ -38,8 +38,27 @@ We will have a Map at the bottom of the page with a summary of the route of the 
 
 ## User Interface
 
+* Login 
+    *  Description
+    ![Image1](../assets/images/Login.png)
+    
+* Signup 
+    *  Description
+    ![Image1](../assets/images/Registration.png)
+    
+* Home
+    *  Description
+    ![Image1](../assets/images/Home_page.png)
 
-
+* Add Ride
+    *  Description
+    ![Image1](../assets/images/Add_Ride.png)
+    
+* Ride Info
+    *  Description
+    ![Image1](../assets/images/Ride_Info.png)
+    
+  
 ##  Breakdown of the division of labor
 * **Corinne:** Login and Home pages
 * **Tarang:** Register page
