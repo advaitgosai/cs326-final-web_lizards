@@ -32,6 +32,11 @@ h2 {
     border-color: maroon;
 }
 
+.form-group {
+    text-align: center;
+    padding: .5em;
+}
+
 .btn:hover {
     background-color: #D3D3D3;
     border-color: #D3D3D3;
