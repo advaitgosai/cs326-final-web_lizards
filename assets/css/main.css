@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 body {
-    overflow-y: scroll;
+  overflow-y: scroll;
 }
 
-=======
->>>>>>> gosai
 h2 {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: left;
@@ -39,26 +36,22 @@ h2 {
   margin: 0.5em;
 }
 
-<<<<<<< HEAD
-=======
 .form-group {
   text-align: center;
   padding: 0.5em;
 }
->>>>>>> gosai
-
 .btn:hover {
   background-color: #d3d3d3;
   border-color: #d3d3d3;
 }
 
 .date {
-    font-size: large;
+  font-size: large;
 }
 
 .form-group {
-    text-align: center;
-    padding: .5em;
+  text-align: center;
+  padding: 0.5em;
 }
 
 .register-form {
@@ -88,124 +81,6 @@ h2 {
   margin: 0.5em;
 }
 
-<<<<<<< HEAD
-  table ul {
-    padding-left: 17px;
-    list-style-type: circle;
-  }
-  table tr td:first-child {
-    background-color: transparent;
-    /* color: #fff; */
-  }
-  
-  @media screen and (max-width: 678px) {
-    tbody td {
-      text-align: left;
-    }
-    tbody td:before {
-      font-weight: 700;
-      text-align: left;
-    }
-  }
-  @media screen and (min-width: 679px) {
-    /* For Faux rounded tr corners */
-    table th,
-    table td {
-      position: relative;
-    }
-    table tr th:first-child:before,
-    table tr th:first-child:after,
-    table tr th:last-child:before,
-    table tr th:last-child:after,
-    table tr td:first-child:before,
-    table tr td:first-child:after,
-    table tr td:last-child:before,
-    table tr td:last-child:after {
-      content: "";
-      display: block;
-      width: 40px;
-      height: 40px;
-      background-color: transparent;
-      position: absolute;
-    }
-    /* border colors match the previously defined border colors and background/section color */
-    table tr th:first-child:before,
-    table tr td:first-child:before {
-      top: -2px;
-      left: -2px;
-      border-top: 2px solid #f2f2f2;
-      border-left: 2px solid #f2f2f2;
-      border-top-left-radius: 6px;
-    }
-    table tr th:first-child:after,
-    table tr td:first-child:after {
-      bottom: -2px;
-      left: -2px;
-      border-bottom: 2px solid #f2f2f2;
-      border-left: 2px solid #f2f2f2;
-      border-bottom-left-radius: 6px;
-    }
-    table tr th:last-child:before,
-    table tr td:last-child:before {
-      top: -2px;
-      right: -2px;
-      border-top: 2px solid #f2f2f2;
-      border-right: 2px solid #f2f2f2;
-      border-top-right-radius: 6px;
-    }
-    table tr th:last-child:after,
-    table tr td:last-child:after {
-      bottom: -2px;
-      right: -2px;
-      border-bottom: 2px solid #f2f2f2;
-      border-right: 2px solid #f2f2f2;
-      border-bottom-right-radius: 6px;
-    }
-    /* end tr corners */
-  }
-=======
-.container {
-  margin: auto;
-  height: 200px;
-  overflow: scroll;
-  /* padding-top: 50px;
-    padding-bottom: 50px; */
-}
-
-/* Custom Table Theme */
-table {
-  table-layout: fixed;
-  background-color: #d3d3d3;
-  font-size: large;
-}
-.table > thead > tr > th,
-.table > tbody > tr > th,
-.table > tfoot > tr > th,
-.table > thead > tr > td,
-.table > tbody > tr > td,
-.table > tfoot > tr > td {
-  border-color: white; /* matches body/section background color */
-  border-bottom-width: 10px;
-  padding: 15px;
-  font-size: 13px;
-}
-table tr td:first-child {
-  vertical-align: middle;
-  /* text-transform: uppercase; */
-}
-table th {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-/* table tr td {
-    background-color: rgba(255,255,255,0.65);
-  } 
-  table tr td:nth-child(3) {
-    background-color: rgba(255,255,255,0.735);
-  }
-  table tr td:last-child {
-    background-color: rgba(255,255,255,0.8);
-  } */
 table ul {
   padding-left: 17px;
   list-style-type: circle;
@@ -214,7 +89,6 @@ table tr td:first-child {
   background-color: transparent;
   /* color: #fff; */
 }
->>>>>>> gosai
 
 @media screen and (max-width: 678px) {
   tbody td {
@@ -251,33 +125,70 @@ table tr td:first-child {
   table tr td:first-child:before {
     top: -2px;
     left: -2px;
-    border-top: 2px solid #f2f2f2;
+    /*border-top: 2px solid #f2f2f2;
     border-left: 2px solid #f2f2f2;
-    border-top-left-radius: 6px;
+    border-top-left-radius: 6px;*/
   }
   table tr th:first-child:after,
   table tr td:first-child:after {
     bottom: -2px;
     left: -2px;
-    border-bottom: 2px solid #f2f2f2;
-    border-left: 2px solid #f2f2f2;
-    border-bottom-left-radius: 6px;
-  }
-  table tr th:last-child:before,
-  table tr td:last-child:before {
-    top: -2px;
-    right: -2px;
-    /*border-top: 2px solid #f2f2f2;
-    border-right: 2px solid #f2f2f2;
-    border-top-right-radius: 6px;*/
-  }
-  table tr th:last-child:after,
-  table tr td:last-child:after {
-    bottom: -2px;
-    right: -2px;
     /*border-bottom: 2px solid #f2f2f2;
-    border-right: 2px solid #f2f2f2;
-    border-bottom-right-radius: 6px;*/
+    border-left: 2px solid #f2f2f2;
+    border-bottom-left-radius: 6px;*/
   }
   /* end tr corners */
+}
+.container {
+  margin: auto;
+  height: 200px;
+  overflow: scroll;
+  /* padding-top: 50px;
+    padding-bottom: 50px; */
+}
+
+/* Custom Table Theme */
+table {
+  table-layout: fixed;
+  background-color: #d3d3d3;
+  font-size: large;
+}
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  border-color: white; /* matches body/section background color */
+  border-bottom-width: 10px;
+  padding: 15px;
+}
+table tr td {
+  vertical-align: middle;
+  /* text-transform: uppercase; */
+}
+table th {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.table-striped {
+  font-size: 13px;
+}
+
+/* table tr td {
+    background-color: rgba(255,255,255,0.65);
+  } 
+  table tr td:nth-child(3) {
+    background-color: rgba(255,255,255,0.735);
+  }
+  table tr td:last-child {
+    background-color: rgba(255,255,255,0.8);
+  } */
+table ul {
+  padding-left: 17px;
+  list-style-type: circle;
+}
+table tr td:first-child {
+  background-color: transparent;
+  /* color: #fff; */
 }
