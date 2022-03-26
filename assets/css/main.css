@@ -1,3 +1,6 @@
+body {
+    overflow-y: scroll;
+}
 
 h2 {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -32,14 +35,19 @@ h2 {
     border-color: maroon;
 }
 
-.form-group {
-    text-align: center;
-    padding: .5em;
-}
 
 .btn:hover {
     background-color: #D3D3D3;
     border-color: #D3D3D3;
+}
+
+.date {
+    font-size: large;
+}
+
+.form-group {
+    text-align: center;
+    padding: .5em;
 }
 
 .register-form {
@@ -96,15 +104,6 @@ h2 {
     color: rgba(255,255,255,0.9);
   }
 
-  /* table tr td {
-    background-color: rgba(255,255,255,0.65);
-  } 
-  table tr td:nth-child(3) {
-    background-color: rgba(255,255,255,0.735);
-  }
-  table tr td:last-child {
-    background-color: rgba(255,255,255,0.8);
-  } */
   table ul {
     padding-left: 17px;
     list-style-type: circle;
