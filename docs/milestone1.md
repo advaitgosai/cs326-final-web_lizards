@@ -40,3 +40,12 @@ We will have a Map at the bottom of the page with a summary of the route of the 
 
 
 
+##  Breakdown of the division of labor
+* **Corinne:** Login and Home pages
+* **Tarang:** Register page
+* **Sachetan:** AddRide page
+* **Advait:** Ride info page
+
+
+
+
