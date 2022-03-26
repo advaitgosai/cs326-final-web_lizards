@@ -6,7 +6,11 @@ h2 {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     text-align: left;
     font-size: x-large;
-    padding-left: 3em;
+}
+
+.pic-label {
+    text-align: left; 
+    padding-left: 8px;
 }
 
 .login-form {
@@ -28,11 +32,17 @@ h2 {
     border-radius: 2px;
 } */
 
+.home-head {
+    padding-top: 5px;
+    padding-left: 1.5em;
+}
+
 .btn {        
     font-size: 15px;
     font-weight: bold;
     background-color: maroon;
     border-color: maroon;
+    margin-top: .5em;
 }
 
 
@@ -73,12 +83,20 @@ h2 {
     line-height: 20px;
 }
 
-  .container {
+  .container-large{
     margin: auto;
-    /* padding-top: 50px;
-    padding-bottom: 50px; */
+    height: 290px; 
+    overflow-y: scroll;
+    width: 95%;
   }
-  
+
+  .container-small{
+    margin: auto;
+    height: 200px; 
+    overflow-y: scroll;
+    width: 95%;
+  }
+
   /* Custom Table Theme */
   table {
     table-layout: fixed;

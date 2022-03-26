@@ -15,7 +15,7 @@
     <body>
         <div class="register-form">
             <form action="/examples/actions/confirmation.php" method="post">
-                <h2 class="text-center" style="padding-left: 0;" >New User Registration</h2>       
+                <h2 class="text-center" >New User Registration</h2>       
                 <div class="form-group">
                     <input type="text" class="form-control" id="firstname" placeholder="First Name" required="required"> 
                 </div>
@@ -34,7 +34,9 @@
                 <div class="form-group">
                     <textarea class="form-control" id="about-me" placeholder="About me!" rows="3"></textarea>
                 </div>
-                <label for="profile-pic" style="text-align: left; padding-left: 8px;">Profile picture:</label>
+
+                <label class="pic-label" for="profile-pic">Profile picture:</label>
+                
                 <div class="form-group"> 
                     <input class="form-control" type="file" id="profile-pic" placeholder="Profile picture">
                 </div>
