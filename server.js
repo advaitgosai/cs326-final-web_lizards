@@ -24,15 +24,15 @@ async function saveUsers() {
     }
 }
 
-async function createUser(response, id,firstname,lastname,password) {
-    if (id=== undefined || firstname === undefined || lastname=== undefined || password===undefined ) {
+async function createUser(response,firstname,lastname,email,password) {
+    if ( firstname === undefined || lastname=== undefined || email===undefined|| password===undefined ) {
       // 400 - Bad Request
       response.status(400).json({ error: 'missing info' });
     } else {
       await reloadUsers(UsersFile);
-      users[id] = {"firstname":firstname,"lastname": lastname,"password": password};
+      users[email] = {"firstname":firstname,"lastname": lastname,"password": password};
       await saveUsers();
-      response.json({id: id,firstname:firstname,lastname: lastname,password: password});
+      response.json({firstname:firstname,lastname: lastname,email: email,password: password});
     }
 }
 
@@ -48,8 +48,8 @@ app.use('/client', express.static('client'));
 
 // api for register
 app.post('/user/create', async (request, response) => {
-    const options = request.query;
-    createUser(response, options.id,options.firstname,options.lastname,options.password);
+    const options = request.body;
+    createUser(response,options.firstname,options.lastname,options.email,options.password);
 });
 
 app.listen(port, () => {
