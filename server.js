@@ -63,7 +63,11 @@ async function addRides(response, destination, date, time, cost, carModel, carCo
     response.status(400).json({ error: 'missing info for adding ride' });
   } else {
     await reloadAddRide(addRideFile);
-    addRideData[totalRides] = {"destination":destination,"date":date,"time": time,"cost": cost, "carModel": carModel, "carColor": carColor, "seats":seats};
+    let personal = "no";
+    if((totalRides % 3) === 0) {
+      personal = "yes";
+    }
+    addRideData[totalRides] = {"destination":destination,"date":date,"time": time,"cost": cost,"carModel": carModel,"carColor": carColor,"seats": seats,"personal": personal};
     totalRides = totalRides + 1;
     await saveAddRide();
     response.json({destination:destination,date:date,time:time,cost:cost,carModel:carModel,carColor,carColor,seats:seats});
