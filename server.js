@@ -45,15 +45,15 @@ async function saveAddRide() {
   }
 }
 
-async function createUser(response,firstname,lastname,email,password) {
-    if ( firstname === undefined || lastname=== undefined || email===undefined|| password===undefined ) {
+async function createUser(response,firstname,lastname,email,password,aboutMe) {
+    if ( firstname === undefined || lastname=== undefined || email===undefined|| password===undefined || aboutMe===undefined ) {
       // 400 - Bad Request
       response.status(400).json({ error: 'missing info' });
     } else {
       await reloadUsers(UsersFile);
-      users[email] = {"firstname":firstname,"lastname": lastname,"password": password};
+      users[email] = {"firstname":firstname,"lastname": lastname,"password": password, "aboutMe": aboutMe};
       await saveUsers();
-      response.json({firstname:firstname,lastname: lastname,email: email,password: password});
+      response.json({firstname:firstname,lastname: lastname,email: email,password: password, aboutMe: aboutMe});
     }
 }
 
@@ -101,6 +101,18 @@ async function addRides(response, destination, date, time, cost, carModel, carCo
     totalRides = totalRides + 1;
     await saveAddRide();
     response.json({destination:destination,date:date,time:time,cost:cost,carModel:carModel,carColor,carColor,seats:seats});
+async function readUser(response,email,password) {
+  await reloadUsers(UsersFile);
+  if(email in users){
+    if(users[email]["password"] === password){
+      response.json({username: email, passsword: password});
+    }
+    else{
+      response.json({ error: `Password Incorrect` });
+    }
+  }
+  else{
+    response.json({ error: `Username '${email}' Not Found` });
   }
 }
 
@@ -117,9 +129,8 @@ app.use('/assets', express.static('assets'));
 
 // api for register
 app.post('/user/create', async (request, response) => {
-    const options = request.body;
-    console.log("data in server: ", options.firstname,options.lastname,options.email,options.password);
-    createUser(response,options.firstname,options.lastname,options.email,options.password);
+  const options = request.body;
+  createUser(response,options.firstname,options.lastname,options.email,options.password,options.aboutMe);
 });
 
 app.get('/getRide', async (request, response) => {
@@ -132,6 +143,14 @@ app.post('/rides/addRides', async (request, response) => {
   console.log(options.destination);
   addRides(response,options.destination,options.date,options.time,options.cost,options.carModel,options.carColor,options.seats);
 });
+
+// api for login
+app.post('/login', async (request, response) =>{
+  const options = request.body;
+  readUser(response,options.email,options.password)
+});
+
+
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
