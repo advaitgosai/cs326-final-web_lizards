@@ -32,6 +32,8 @@ async function addRides(destination, date, time, cost, carModel, carColor, seats
     });
     const data = await response.json();
     console.log("data: ",data);
+    window.alert("Ride Created!");
+    location.reload();
     return data;
 }
 
