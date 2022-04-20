@@ -3,10 +3,11 @@ import logger from 'morgan';
 import { readFile, writeFile } from 'fs/promises';
 
 let users = {};
+let totalRides = 0;
 let addRideData = {}
 
 const UsersFile = 'users.json';
-const addRideFile = 'addRideFile.json';
+const addRideFile = 'addRides.json';
 
 async function reloadUsers(filename) {
     try {
@@ -57,12 +58,13 @@ async function createUser(response,firstname,lastname,email,password) {
 }
 
 async function addRides(response, destination, date, time, cost, carModel, carColor, seats) {
-  if ( destination === undefined || date=== undefined || time===undefined|| cost===undefined || carModel===undefined || carColor===undefined || seats===undefined) {
+  if (destination === undefined || date=== undefined || time===undefined|| cost===undefined || carModel===undefined || carColor===undefined || seats===undefined) {
     // 400 - Bad Request
     response.status(400).json({ error: 'missing info for adding ride' });
   } else {
-    await reloadUsers(UsersFile);
-    addRideData[destination] = {"date":date,"time": time,"cost": cost, "carModel": carModel, "carColor": carColor, "seats":seats};
+    await reloadAddRide(addRideFile);
+    addRideData[totalRides] = {"destination":destination,"date":date,"time": time,"cost": cost, "carModel": carModel, "carColor": carColor, "seats":seats};
+    totalRides = totalRides + 1;
     await saveAddRide();
     response.json({destination:destination,date:date,time:time,cost:cost,carModel:carModel,carColor,carColor,seats:seats});
   }
