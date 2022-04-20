@@ -1,5 +1,4 @@
 const dateValue = document.getElementById("start");
-const testDate = "120421";
 let rawDate = dateValue.value;
 const formattedDate = rawDate.substring(5, 7) + rawDate.substring(8, 10) + rawDate.substring(2, 4);
 
@@ -16,7 +15,7 @@ async function readRides(date) {
     }
   }
 
-const json = await readRides(formattedDate);
+const json = await readRides(rawDate);
 
 const keys = Object.keys(json);
 
@@ -40,7 +39,7 @@ personalRideKeys.forEach((element) =>  {
         const cost = document.createElement("td");
         const costText = document.createTextNode(json[element].cost);
         const model= document.createElement("td");
-        const modelText = document.createTextNode(json[element].model);
+        const modelText = document.createTextNode(json[element].carModel);
         const seats = document.createElement("td");
         const seatsText = document.createTextNode(json[element].seats);
 
@@ -64,7 +63,7 @@ otherRideKeys.forEach((element) =>  {
         const cost = document.createElement("td");
         const costText = document.createTextNode(json[element].cost);
         const model= document.createElement("td");
-        const modelText = document.createTextNode(json[element].model);
+        const modelText = document.createTextNode(json[element].carModel);
         const seats = document.createElement("td");
         const seatsText = document.createTextNode(json[element].seats);
 
