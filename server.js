@@ -38,7 +38,7 @@ async function saveUsers() {
 
 async function saveAddRide() {
   try {
-    const data = JSON.stringify(addRideData);
+    const data = JSON.stringify(rides);
     await writeFile(RideFile, data, { encoding: 'utf8' });
   } catch (err) {
     console.log(err);
@@ -92,8 +92,8 @@ async function addRides(response, destination, date, time, cost, carModel, carCo
     // 400 - Bad Request
     response.status(400).json({ error: 'missing info for adding ride' });
   } else {
-    await reloadRides(addRideFile);
-    addRideData[totalRides] = {"destination":destination,"date":date,"time": time,"cost": cost, "carModel": carModel, "carColor": carColor, "seats":seats};
+    await reloadRides(RideFile);
+    rides[totalRides] = {"destination":destination,"date":date,"time": time,"cost": cost, "carModel": carModel, "carColor": carColor, "seats":seats};
     totalRides = totalRides + 1;
     await saveAddRide();
     response.json({destination:destination,date:date,time:time,cost:cost,carModel:carModel,carColor,carColor,seats:seats});
@@ -125,6 +125,7 @@ app.get('/getRide', async (request, response) => {
   
 app.post('/rides/addRides', async (request, response) => {
   const options = request.body;
+  console.log(options.destination);
   addRides(response,options.destination,options.date,options.time,options.cost,options.carModel,options.carColor,options.seats);
 });
 
