@@ -49,12 +49,9 @@ app.use('/assets', express.static('assets'));
 // api for register
 app.post('/user/create', async (request, response) => {
     const options = request.body;
-    console.log("data in server: ", options.firstname,options.lastname,options.email,options.password);
     createUser(response,options.firstname,options.lastname,options.email,options.password);
 });
 
-app.get('')
-
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
-});
+  });
