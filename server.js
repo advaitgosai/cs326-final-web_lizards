@@ -42,6 +42,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/client', express.static('client'));
+app.use('/assets', express.static('assets'));
 
 
 
@@ -49,9 +50,10 @@ app.use('/client', express.static('client'));
 // api for register
 app.post('/user/create', async (request, response) => {
     const options = request.body;
+    console.log("data in server: ", options.firstname,options.lastname,options.email,options.password);
     createUser(response,options.firstname,options.lastname,options.email,options.password);
 });
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
-  });
+});
