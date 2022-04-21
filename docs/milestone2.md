@@ -20,6 +20,9 @@ Team Overview:
 * Home Page
   * /getRide : GET : gets a specific set of rides with a date range (READ)
 * Ride Page - Passenger
+  * /getReviews : GET : gets all reviews saved (READ)
+  * /getAllRides : GET : gets all saved rides (READ)
+  * /getUsers : GET : get all user info (READ)
 * Ride Page - Driver
   * /updateRide : PUT : updates ride corresponding to the id in the rides database (UPDATE)
   * /deleteRide : DELETE : deletes ride corresponding to the id in the rides database (DELETE)
@@ -39,9 +42,11 @@ request which saves the attributes of the ride on the database. The user is requ
 
 https://glacial-chamber-29044.herokuapp.com/client/home.html
 ![Image1](../assets/images/deploy_scs/home.png)
+The home page displays all open rides for a specific date. The API uses a GET request specified by date to return all rides the user is looking for. 
 
 https://glacial-chamber-29044.herokuapp.com/client/ride-passenger.html
 ![Image1](../assets/images/deploy_scs/ride-passenger.png)
+The ride information page is the place that the prospective passenger can view information pertaining to a specific ride. The API returns all rides and users through GET requests and uses a unique ride ID to display the ride-specific and driver-specific information. All reviews relating to a specifc driver are also displayed on the table through a GET request.
 
 https://glacial-chamber-29044.herokuapp.com/client/ride-driver.html
 ![Image1](../assets/images/deploy_scs/ride-update.png)
