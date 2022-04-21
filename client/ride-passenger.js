@@ -67,6 +67,13 @@ rideKeys.forEach((element) =>  {
     const cardDate = document.getElementById("card-date");
     const dateText = document.createTextNode("Date: " + today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate());
 
+    const carModel = document.getElementById("car-model");
+    const carModelText = document.createTextNode("Car Model: " + rideJson[element].carModel);
+    const carColor = document.getElementById("car-color");
+    const carColorText = document.createTextNode("Car Color: " + rideJson[element].carColor);
+    const carSeats = document.getElementById("car-seats");
+    const carSeatsText = document.createTextNode("# of Seats: " + rideJson[element].seats);
+
     const cardTime = document.getElementById("card-time");
     const timeText = document.createTextNode("Ride to " + rideJson[element].destination + " at " + rideJson[element].time);
 
@@ -77,6 +84,10 @@ rideKeys.forEach((element) =>  {
     const bio = document.createElement("p");
     console.log(userJson[rideJson[element].driver].aboutMe)
     const bioText = document.createTextNode(userJson[rideJson[element].driver].aboutMe);
+
+    carModel.appendChild(carModelText);
+    carColor.appendChild(carColorText);
+    carSeats.appendChild(carSeatsText);
 
     cardDate.appendChild(dateText);
 
