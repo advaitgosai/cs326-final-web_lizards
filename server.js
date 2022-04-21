@@ -4,9 +4,12 @@ import { readFile, writeFile } from 'fs/promises';
 
 let users = {};
 let rides = {};
+let reviews = {};
+
 
 const UsersFile = 'users.json';
 const RideFile = 'rides.json'
+const ReviewFile = 'reviews.json'
 let totalRides = 0;
 
 async function reloadUsers(filename) {
@@ -22,6 +25,14 @@ async function reloadRides(filename) {
   try {
     const data = await readFile(filename, { encoding: 'utf8' });
     rides = JSON.parse(data);
+  } catch (err) {
+    rides = {};
+  }
+}
+async function reloadReviews(filename) {
+  try {
+    const data = await readFile(filename, { encoding: 'utf8' });
+    reviews = JSON.parse(data);
   } catch (err) {
     rides = {};
   }
@@ -87,7 +98,37 @@ async function readRide(response, date) {
   } 
 }
 
-async function addRides(response, destination, date, time, cost, carModel, carColor, seats) {
+async function readReviews(response) {
+  await reloadReviews(ReviewFile);
+  if (reviews != {}) {
+    response.json(reviews);
+  } else {
+    // 404 - Not Found
+    response.json({ error: `Reviews Not Found` });
+  } 
+}
+
+async function readUsers(response) {
+  await reloadUsers(UsersFile);
+  if (users != {}) {
+    response.json(users);
+  } else {
+    // 404 - Not Found
+    response.json({ error: `No User Found` });
+  } 
+}
+
+async function readAllRides(response) {
+  await reloadRides(RideFile);
+  if (rides != {}) {
+    response.json(rides);
+  } else {
+    // 404 - Not Found
+    response.json({ error: `No Rides Found` });
+  } 
+}
+
+async function addRides(response, driver, destination, date, time, cost, carModel, carColor, seats) {
   if (destination === undefined || date=== undefined || time===undefined|| cost===undefined || carModel===undefined || carColor===undefined || seats===undefined) {
     // 400 - Bad Request
     response.status(400).json({ error: 'missing info for adding ride' });
@@ -97,10 +138,13 @@ async function addRides(response, destination, date, time, cost, carModel, carCo
     if((totalRides % 3) === 0) {
       personal = "yes";
     }
-    rides[totalRides] = {"destination":destination,"date":date,"time": time,"cost": cost,"carModel": carModel,"carColor": carColor,"seats": seats,"personal": personal};
+    rides[totalRides] = {"driver":driver, "destination":destination,"date":date,"time": time,"cost": cost,"carModel": carModel,"carColor": carColor,"seats": seats,"personal": personal};
     totalRides = totalRides + 1;
     await saveAddRide();
-    response.json({destination:destination,date:date,time:time,cost:cost,carModel:carModel,carColor,carColor,seats:seats});
+    response.json({driver: driver, destination:destination,date:date,time:time,cost:cost,carModel:carModel,carColor,carColor,seats:seats});
+  }
+}
+
 async function readUser(response,email,password) {
   await reloadUsers(UsersFile);
   if(email in users){
@@ -133,6 +177,18 @@ app.post('/user/create', async (request, response) => {
   createUser(response,options.firstname,options.lastname,options.email,options.password,options.aboutMe);
 });
 
+app.get('/getReviews', async (request, response) => {
+  readReviews(response);
+});
+
+app.get('/getUsers', async (request, response) => {
+  readUsers(response);
+});
+
+app.get('/getAllRides', async (request, response) => {
+  readAllRides(response);
+});
+
 app.get('/getRide', async (request, response) => {
   const options = request.query;
   readRide(response, options.date);
@@ -141,7 +197,7 @@ app.get('/getRide', async (request, response) => {
 app.post('/rides/addRides', async (request, response) => {
   const options = request.body;
   console.log(options.destination);
-  addRides(response,options.destination,options.date,options.time,options.cost,options.carModel,options.carColor,options.seats);
+  addRides(response,options.driver, options.destination,options.date,options.time,options.cost,options.carModel,options.carColor,options.seats);
 });
 
 // api for login
