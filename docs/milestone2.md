@@ -30,9 +30,11 @@ Team Overview:
 ## Screenshots 
 https://glacial-chamber-29044.herokuapp.com/client/register.html
 ![Image1](../assets/images/deploy_scs/registration.png)
+The Register page gives you a form where you can input registration information, and then it displays a json at the bottom (only to show that the user has been added to the JSON file and the POST request works correctly).
 
 https://glacial-chamber-29044.herokuapp.com/client/login.html
 ![Image1](../assets/images/deploy_scs/login.png)
+The Login page allows you to input a username(email) and the password and then it displays a json at the bottom (only to show that the user has successfully logged in, or throws an error JSON if the username or password is incorrect. Also to show that the POST request works correctly).
 
 https://glacial-chamber-29044.herokuapp.com/client/addRide.html
 ![Image1](../assets/images/deploy_scs/addRide.png)
