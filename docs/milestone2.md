@@ -33,6 +33,9 @@ https://glacial-chamber-29044.herokuapp.com/client/login.html
 
 https://glacial-chamber-29044.herokuapp.com/client/addRide.html
 ![Image1](../assets/images/deploy_scs/addRide.png)
+The add ride page for the driver has attributes that the driver must enter such as email, destination, date, time,
+cost of ride, car model, car color and number of seats. In the API By clicking the button "Create" it creates a POST 
+request which saves the attributes of the ride on the database. The user is required to enter all information. 
 
 https://glacial-chamber-29044.herokuapp.com/client/home.html
 ![Image1](../assets/images/deploy_scs/home.png)
