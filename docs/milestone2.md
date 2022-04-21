@@ -25,9 +25,24 @@ Team Overview:
   * /deleteRide : DELETE : deletes ride corresponding to the id in the rides database (DELETE)
 
 ## Screenshots 
+![Image1](../assets/images/deploy_scs/registration.png)
+
+![Image1](../assets/images/deploy_scs/login.png)
+
+![Image1](../assets/images/deploy_scs/addRide.png)
+
+![Image1](../assets/images/deploy_scs/home.png)
+
+![Image1](../assets/images/deploy_scs/ride-passenger.png)
+
+![Image1](../assets/images/deploy_scs/ride-update.png)
+
+![Image1](../assets/images/deploy_scs/ride-delete.png)
+
+
 
 ## Division of Labor
-* Corrine - Home Page APIs, Ride Page Passenger APIs, updating both pages with data from rides database
+* Corinne - Home Page APIs, Ride Page Passenger APIs, updating both pages with data from rides database
 * Sachetan - Add Ride APIs, Creating rides database structure
 * Tarang - Login APIs, Register APIs, Heroku Deployment
 * Advait - Ride Page Driver APIs + Frontend, Ride Page Passenger APIs, Documentation
