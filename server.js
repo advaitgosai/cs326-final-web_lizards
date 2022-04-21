@@ -126,6 +126,17 @@ async function readAllRides(response) {
     // 404 - Not Found
     response.json({ error: `No Rides Found` });
   } 
+} 
+
+async function deleteRide(response, id) {
+  if(id === undefined) {
+    response.status(400).json({ error: 'Invalid ID' });
+  } else {
+    await reloadRides(RideFile);
+    delete rides[id];
+  }
+  await saveAddRide();
+    response.json({id: id});
 }
 
 async function addRides(response, driver, destination, date, time, cost, carModel, carColor, seats) {
@@ -157,6 +168,39 @@ async function readUser(response,email,password) {
   }
   else{
     response.json({ error: `Username '${email}' Not Found` });
+  } 
+}
+  
+async function updateRide(response, id, destination, date, time, cost, carModel, carColor, seats) {
+  if (destination === undefined && date=== undefined && time===undefined && cost===undefined && carModel===undefined && carColor===undefined && seats===undefined) {
+    // 400 - Bad Request
+    response.status(400).json({ error: 'missing info for updating ride' });
+  } 
+  else {
+    await reloadRides(RideFile);
+    if (destination !== "") { 
+      rides[id].destination = destination;
+    }
+    if (date !== "") { 
+      rides[id].date = date;
+    }
+    if (time !== "") { 
+      rides[id].time = time;
+    }
+    if (cost !== "") { 
+      rides[id].cost = cost;
+    }
+    if (carModel !== "") { 
+      rides[id].carModel = carModel;
+    }
+    if (carColor !== "") { 
+      rides[id].carColor = carColor;
+    }
+    if (seats !== "") { 
+      rides[id].seats = seats;
+    }
+    await saveAddRide();
+    response.json({id: id, destination:destination,date:date,time:time,cost:cost,carModel:carModel,carColor,carColor,seats:seats});
   }
 }
 
@@ -167,9 +211,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/client', express.static('client'));
 app.use('/assets', express.static('assets'));
-
-
-
 
 // api for register
 app.post('/user/create', async (request, response) => {
@@ -207,6 +248,15 @@ app.post('/login', async (request, response) =>{
 });
 
 
+app.put('/rides/updateRide', async (request, response) => {
+  const options = request.body;
+  updateRide(response, options.id, options.destination,options.date,options.time,options.cost,options.carModel,options.carColor,options.seats);
+});
+
+app.delete('/rides/deleteRide', async (request, response) => {
+  const options = request.body;
+  deleteRide(response, options.id);
+})
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
