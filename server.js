@@ -87,7 +87,18 @@ async function readRide(response, date) {
   } 
 }
 
-async function addRides(response, destination, date, time, cost, carModel, carColor, seats) {
+async function deleteRide(response, id) {
+  if(id === undefined) {
+    response.status(400).json({ error: 'Invalid ID' });
+  } else {
+    await reloadRides(RideFile);
+    delete rides[id];
+  }
+  await saveAddRide();
+    response.json({id: id});
+}
+
+async function addRides(response, driver, destination, date, time, cost, carModel, carColor, seats) {
   if (destination === undefined || date=== undefined || time===undefined|| cost===undefined || carModel===undefined || carColor===undefined || seats===undefined) {
     // 400 - Bad Request
     response.status(400).json({ error: 'missing info for adding ride' });
@@ -97,10 +108,10 @@ async function addRides(response, destination, date, time, cost, carModel, carCo
     if((totalRides % 3) === 0) {
       personal = "yes";
     }
-    rides[totalRides] = {"destination":destination,"date":date,"time": time,"cost": cost,"carModel": carModel,"carColor": carColor,"seats": seats,"personal": personal};
+    rides[totalRides] = {"driver":driver, "destination":destination,"date":date,"time": time,"cost": cost,"carModel": carModel,"carColor": carColor,"seats": seats,"personal": personal};
     totalRides = totalRides + 1;
     await saveAddRide();
-    response.json({destination:destination,date:date,time:time,cost:cost,carModel:carModel,carColor,carColor,seats:seats});
+    response.json({driver: driver, destination:destination,date:date,time:time,cost:cost,carModel:carModel,carColor,carColor,seats:seats});
   }
 }
 
@@ -160,13 +171,18 @@ app.get('/getRide', async (request, response) => {
 app.post('/rides/addRides', async (request, response) => {
   const options = request.body;
   console.log(options.destination);
-  addRides(response,options.destination,options.date,options.time,options.cost,options.carModel,options.carColor,options.seats);
+  addRides(response,options.driver, options.destination,options.date,options.time,options.cost,options.carModel,options.carColor,options.seats);
 });
 
 app.put('/rides/updateRide', async (request, response) => {
   const options = request.body;
   updateRide(response, options.id, options.destination,options.date,options.time,options.cost,options.carModel,options.carColor,options.seats);
 });
+
+app.delete('/rides/deleteRide', async (request, response) => {
+  const options = request.body;
+  deleteRide(response, options.id);
+})
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
