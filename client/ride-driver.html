@@ -148,7 +148,7 @@
                                 <!--<h5 class="card-title" id="time">Time: 1630 EST</h5>-->
                             </div>
                             <div class="col-sm-7">
-                                <form action="/examples/actions/confirmation.php" method="post">
+                                <form>
                                     <h5>Edit this Ride</h5>       
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="destination" placeholder="Destination" required="required"> 
@@ -169,15 +169,15 @@
                                         <input type="text" class="form-control" id="car-color" placeholder="Car Color" required="required">
                                     </div>
                                     <div class="form-group">
-                                        <input type="number" class="form-control" id="Seats" placeholder="Number of Seats" required="required">
+                                        <input type="number" class="form-control" id="seats" placeholder="Number of Seats" required="required">
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-10">
-                                                <button type="submit" class="btn btn-primary btn-block">Update</button>
+                                                <button type="button" class="btn btn-primary btn-block" id="update">Update</button>
                                             </div>
                                             <div class="col-sm-2">
-                                                <button type="submit" class="btn btn-primary btn-block">Delete Ride</button>
+                                                <button type="button" class="btn btn-primary btn-block">Delete Ride</button>
                                             </div>
                                         </div>                   
                                     </div>       
