@@ -1,1 +1,23 @@
+# Web Lizards
+## URide, a ridesharing web application for UMass students, staff and faculty
 
+Team Overview:
+| Member | GitHub |
+| ------ | ------ |
+| Sachetan Sengupta | [sachetans](https://github.com/sachetans) |
+| Corinne Greene | [cegreene](https://github.com/cegreene) |
+| Tarang Mittal | [tarangMittal](https://github.com/tarangMittal) |
+| Advait Gosai | [advaitgosai](https://github.com/advaitgosai) |
+
+##API Description
+
+* Login Page
+  * /login : POST : checks if user in users database (READ)
+* Register Page
+  * /register : POST : adds new user to users database (CREATE)
+* Home Page
+  * /getRide : GET : gets a specific set of rides with a date range (READ)
+* Ride Page - Passenger
+* Ride Page - Driver
+  * /updateRide?id=1234 : PUT : updates ride corresponding to the id in the rides database (UPDATE)
+  * /deleteRide?id=1234 : DELETE : deletes ride corresponding to the id in the rides database (DELETE)
