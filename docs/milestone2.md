@@ -21,8 +21,8 @@ Team Overview:
   * /getRide : GET : gets a specific set of rides with a date range (READ)
 * Ride Page - Passenger
 * Ride Page - Driver
-  * /updateRide?id=1234 : PUT : updates ride corresponding to the id in the rides database (UPDATE)
-  * /deleteRide?id=1234 : DELETE : deletes ride corresponding to the id in the rides database (DELETE)
+  * /updateRide : PUT : updates ride corresponding to the id in the rides database (UPDATE)
+  * /deleteRide : DELETE : deletes ride corresponding to the id in the rides database (DELETE)
 
 ## Screenshots 
 
