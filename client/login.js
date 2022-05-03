@@ -6,7 +6,7 @@ const loginButton = document.getElementById("login");
 loginButton.addEventListener('click', async(e)=>{
     const data = await checkLogin(email.value, password.value);
     if("error" in data){
-        output.innerHTML = JSON.stringify(data);
+        output.innerHTML = data["error"];
     }
     else{
         output.innerHTML = "You " + email.value + " have successfully logged in!";
@@ -15,12 +15,8 @@ loginButton.addEventListener('click', async(e)=>{
 
 
 async function checkLogin(email,password) {
-    const response = await fetch(`/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({email: email,password: password}),
+    const response = await fetch(`/login?email=${email}&password=${password}`,{
+        method: 'POST'
       });
       const data = await response.json();
       return data;
