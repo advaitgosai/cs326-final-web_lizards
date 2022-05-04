@@ -1,34 +1,63 @@
-/*
+import 'dotenv/config';
+import { MongoClient, ServerApiVersion } from 'mongodb';
 
-Outline for database:
 
-include a .env file with the database URL
+export class RideShareDb {
+    constructor(dburl) {
+      this.dburl = dburl;
+    }
+    async connect() {
+        this.client = await MongoClient.connect(this.dburl, {
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+          serverApi: ServerApiVersion.v1,
+        });
+    
+        // Get the database.
+        this.db = this.client.db('ride-share');
+    
+        // Init the database.
+        await this.init();
+    }
 
-insert(){
-    For Register API:
-    create table users initially 
-    and then input user with all fields (firstname,lastname,email,password(encrypted),aboutme)
+    async init() {
+        this.usersCollection = this.db.collection('users');
+        this.ridesCollection = this.db.collection('rides');
+        this.reviewsCollection = this.db.collection('reviews');
+    }
 
-    For Add Ride API:
-    create a table rides initially
-    input ride with all necessary fields (destination, date,time,cost,carModel,carColor,seats,personal(yes or no))
+        // Close the pool.
+    async close() {
+        this.client.close();
+    }
+
+    // add all api functions
+
+    async createUser(firstname,lastname,email,password,aboutMe){
+        email = email.replace(/\s+/g, '');
+        const user = await this.usersCollection.find({"email": email}).toArray();
+        if(user.length === 0){
+            const res = await this.usersCollection.insertOne({firstname:firstname,lastname: lastname,email: email,password: password, aboutMe: aboutMe});
+            return res;
+        }
+        else{
+            return {"error": "Username already exists!"};
+        }
+    }
+
+    async readUser(email,password) {
+        const user = await this.usersCollection.find({"email": email}).toArray();
+        if(user.length === 1){
+            if(user[0].password === password){
+                return {"success": 'yes'};
+            }
+            else{
+                return { 'error':`Password Incorrect!`};
+            }
+        }
+        else{
+            return { "error" : "Username "+ email + " Not Found!" };
+        }
+    }   
+
 }
-
-find(){
-    For Login API:
-    reading from the users table and making sure username and password combination exists
-
-    For get Rides API:
-    reading from rides table and finding all rides for a certain date
-}
-
-find and update(){
-    For update Ride API:
-    Replace ride in rides table with the new data for each of tthee fields
-
-    for delete Ride API:
-    delete row from rides table with the specific ride ID passed in 
-}
-
-
-*/

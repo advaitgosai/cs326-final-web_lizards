@@ -7,7 +7,7 @@ const carModel = document.getElementById("car-model");
 const carColor = document.getElementById("car-color");
 const seats = document.getElementById("seats");
 
-const rideID = 100;
+const rideID = 1;
 
 const updateButton = document.getElementById("update");
 const deleteButton = document.getElementById("delete");

@@ -1,17 +1,56 @@
 import express from 'express';
-import logger from 'morgan';
-import { readFile, writeFile } from 'fs/promises';
+import { RideShareDb } from './database.js';
 
-let users = {};
-let rides = {};
-let reviews = {};
+// let users = {};
+// let rides = {};
+// let reviews = {};
+// const UsersFile = 'users.json';
+// const RideFile = 'rides.json'
+// const ReviewFile = 'reviews.json'
+// let totalRides = 0;
+
+class RideShareServer{
+  constructor(dburl) {
+    this.dburl = dburl;
+    this.app = express();
+    this.app.use('/', express.static('client'));
+    this.app.use('/assets', express.static('assets'));
+  }
+  async initRoutes() {
+    const self = this;
+    // all of the api routes here 
 
 
-const UsersFile = 'users.json';
-const RideFile = 'rides.json'
-const ReviewFile = 'reviews.json'
-let totalRides = 0;
+    this.app.post('/user/create', async (req, res) => {
+      const { firstname, lastname, email, password, aboutMe} = req.query;
+      const user = await self.db.createUser(firstname,lastname,email,password,aboutMe);
+      res.send(JSON.stringify(user));
+    });
 
+    this.app.post('/login', async (req, res) =>{
+      const { email, password} = req.query;
+      const result = await self.db.readUser(email,password);
+      res.send(JSON.stringify(result));
+    });
+
+  }
+  async initDb() {
+    this.db = new RideShareDb(this.dburl);
+    await this.db.connect();
+  }
+  async start() {
+    await this.initRoutes();
+    await this.initDb();
+    const port = process.env.PORT || 3000;
+    this.app.listen(port, () => {
+      console.log(`RideShareServer listening on port ${port}!`);
+    });
+  }
+}
+const server = new RideShareServer(process.env.DATABASE_URL);
+server.start();
+
+/*
 async function reloadUsers(filename) {
     try {
       const data = await readFile(filename, { encoding: 'utf8' });
@@ -205,7 +244,7 @@ async function updateRide(response, id, destination, date, time, cost, carModel,
 }
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -261,3 +300,6 @@ app.delete('/rides/deleteRide', async (request, response) => {
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
 });
+
+*/
+
