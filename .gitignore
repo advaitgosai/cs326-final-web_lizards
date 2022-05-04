@@ -1,9 +1,22 @@
 *.json
 node_modules/
 
-
 # dotenv environment variables file 
 .env
 
 # package-lock.json
 package-lock.json
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+/deploy
