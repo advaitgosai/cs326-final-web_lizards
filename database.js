@@ -66,38 +66,23 @@ export class RideShareDb {
     }
 
     async readUsers() {
-        const res = this.usersCollection.find({});
+        const res = this.usersCollection.find({}).toArray();
         return res;
     }
    
     async readReviews() {
-        const res = this.reviewsCollection.find({});
+        const res = this.reviewsCollection.find({}).toArray();
         return res;
     }
        
     async readAllRides() {
-        const res = this.ridesCollection.find({});
+        const res = this.ridesCollection.find({}).toArray();
         return res;
     }
 
-    async getRidesByDate(date) {
-        let result = [];
-        let rides = this.ridesCollection.find({});
-        let keys = Object.keys(rides);
-        for(let i = 0; i < keys.length; i++) {
-            if(rides[keys[i]]["date"] === date) { result.push(rides[keys[i]]); }
-        }
-        console.log(result)
-        return result;
-      }
-
     async getRide(date) {
-        let list = await getRidesByDate(date);
-        console.log(list)
-        let result = {};
-        for(let i = 0; i < list.length; i++) {
-            result[i] = list[i];
-        }
+        let result = this.ridesCollection.find({"date": date}).toArray();
+        console.log(result);
         if (result != {}) {
             return result;
           } else {
