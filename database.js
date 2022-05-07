@@ -1,11 +1,11 @@
 import 'dotenv/config';
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
-
 export class RideShareDb {
     constructor(dburl) {
       this.dburl = dburl;
     }
+
     async connect() {
         this.client = await MongoClient.connect(this.dburl, {
           useNewUrlParser: true,
@@ -59,5 +59,15 @@ export class RideShareDb {
             return { "error" : "Username "+ email + " Not Found!" };
         }
     }   
+
+    async readRide(date) {
+        const res = await this.ridesCollection.findOne({ date:date });
+        return res;
+    }
+
+    async readAllRides() {
+        const res = await this.ridesCollection.find({}).toArray();
+        return res;
+    }
 
 }

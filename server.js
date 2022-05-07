@@ -33,11 +33,31 @@ class RideShareServer{
       res.send(JSON.stringify(result));
     });
 
+    this.app.get('/getRide', async (req, res) => {
+      try {
+        const { id } = req.query;
+        const ride = await self.db.readRide(id);
+        res.send(JSON.stringify(ride));
+      } catch (err) {
+        res.status(500).send(err);
+      }
+    });
+
+    this.app.get('/getAllRides', async (req, res) => {
+      try {
+        const rides = await self.db.readAllRides();
+        res.send(JSON.stringify(rides));
+      } catch (err) {
+        res.status(500).send(err);
+      }
+    });
+
   }
   async initDb() {
     this.db = new RideShareDb(this.dburl);
     await this.db.connect();
   }
+  
   async start() {
     await this.initRoutes();
     await this.initDb();

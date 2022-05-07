@@ -17,7 +17,10 @@ async function readRides(date) {
 
 const json = await readRides(rawDate);
 
+
 const keys = Object.keys(json);
+
+
 
 let personalRideKeys = [];
 let otherRideKeys = [];
