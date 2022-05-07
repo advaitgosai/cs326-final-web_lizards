@@ -65,6 +65,77 @@ export class RideShareDb {
         return res;
     }
 
-    async addRide()
+    async readUsers() {
+        const res = this.usersCollection.find({});
+        return res;
+    }
+   
+    async readReviews() {
+        const res = this.reviewsCollection.find({});
+        return res;
+    }
+       
+    async readAllRides() {
+        const res = this.ridesCollection.find({});
+        return res;
+    }
 
+    async getRidesByDate(date) {
+        let result = [];
+        let rides = this.ridesCollection.find({});
+        let keys = Object.keys(rides);
+        for(let i = 0; i < keys.length; i++) {
+            if(rides[keys[i]]["date"] === date) { result.push(rides[keys[i]]); }
+        }
+        console.log(result)
+        return result;
+      }
+
+    async getRide(date) {
+        let list = await getRidesByDate(date);
+        console.log(list)
+        let result = {};
+        for(let i = 0; i < list.length; i++) {
+            result[i] = list[i];
+        }
+        if (result != {}) {
+            return result;
+          } else {
+            return { "error" : "Rides Not Found" };
+        } 
+    }
+
+    async deleteRide(id) {}
+
+    async updateRide(id, destination, date, time, cost, carModel, carColor, seats) {
+        if (destination === undefined && date=== undefined && time===undefined && cost===undefined && carModel===undefined && carColor===undefined && seats===undefined) {
+            return { "error" : 'missing info for updating ride' };
+        } 
+        /*else {
+            let rides = this.ridesCollection.find({});
+            if (destination !== "") { 
+                rides[id].destination = destination;
+            }
+            if (date !== "") { 
+                rides[id].date = date;
+            }
+            if (time !== "") { 
+                rides[id].time = time;
+            }
+            if (cost !== "") { 
+                rides[id].cost = cost;
+            }
+            if (carModel !== "") { 
+                rides[id].carModel = carModel;
+            }
+            if (carColor !== "") { 
+                rides[id].carColor = carColor;
+            }
+            if (seats !== "") { 
+                rides[id].seats = seats;
+            }
+            await saveAddRide();
+            response.json({id: id, destination:destination,date:date,time:time,cost:cost,carModel:carModel,carColor,carColor,seats:seats});
+        }*/
+    }
 }

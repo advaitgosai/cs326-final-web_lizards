@@ -20,7 +20,6 @@ class RideShareServer{
     const self = this;
     // all of the api routes here 
 
-
     this.app.post('/user/create', async (req, res) => {
       const { firstname, lastname, email, password, aboutMe} = req.query;
       const user = await self.db.createUser(firstname,lastname,email,password,aboutMe);
@@ -38,6 +37,50 @@ class RideShareServer{
       const result = await self.db.addARide(driver, destination, date, time, cost, carModel, carColor, seats);
       res.send(JSON.stringify(result))
     });
+
+    this.app.post('/getReviews', async (req, res) => {
+      const result = await self.db.readReviews();
+      res.send(JSON.stringify(result));
+    })
+
+    this.app.post('/getUsers', async (req, res) => {
+      const result = await self.db.readUsers();
+      res.send(JSON.stringify(result));
+    })
+
+    this.app.post('/getAllRides', async (req, res) => {
+      const result = await self.db.readAllRides();
+      res.send(JSON.stringify(result));
+    })    
+
+    this.app.post('/getRide', async (req, res) => {
+      const {date} = req.query;
+      const result = await self.db.getRide(date);
+      res.send(JSON.stringify(result));
+    })      
+
+    this.app.post('/updateRide', async (req, res) => {
+      const {id, destination, date, time, cost, carModel, carColor, seats} = req.query;
+      const result = await self.db.updateRide(id, destination, date, time, cost, carModel, carColor, seats);
+      res.send(JSON.stringify(result));
+    })
+
+    this.app.post('/deleteRide', async (req, res) => {
+      const {id} = req.query;
+      const result = await self.db.deleteRide(id);
+      res.send(JSON.stringify(result));
+    })
+
+    /*
+    app.put('/rides/updateRide', async (request, response) => {
+      const options = request.body;
+      updateRide(response, options.id, options.destination,options.date,options.time,options.cost,options.carModel,options.carColor,options.seats);
+    });
+    
+    app.delete('/rides/deleteRide', async (request, response) => {
+      const options = request.body;
+      deleteRide(response, options.id);
+    })*/
 
   }
   async initDb() {
