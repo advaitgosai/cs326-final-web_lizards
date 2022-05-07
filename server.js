@@ -20,7 +20,6 @@ class RideShareServer{
     const self = this;
     // all of the api routes here 
 
-
     this.app.post('/user/create', async (req, res) => {
       const { firstname, lastname, email, password, aboutMe} = req.query;
       const user = await self.db.createUser(firstname,lastname,email,password,aboutMe);
@@ -33,31 +32,62 @@ class RideShareServer{
       res.send(JSON.stringify(result));
     });
 
-    this.app.get('/getRide', async (req, res) => {
-      try {
-        const { id } = req.query;
-        const ride = await self.db.readRide(id);
-        res.send(JSON.stringify(ride));
-      } catch (err) {
-        res.status(500).send(err);
-      }
+    this.app.post('/rides/addRides', async (req, res) => {
+      const { driver, destination, date, time, cost, carModel, carColor, seats} = req.query;
+      const result = await self.db.addARide(driver, destination, date, time, cost, carModel, carColor, seats);
+      res.send(JSON.stringify(result))
+    });
+
+    this.app.get('/getReviews', async (req, res) => {
+      const result = await self.db.readReviews();
+      res.send(JSON.stringify(result));
+    });
+
+    this.app.get('/getUsers', async (req, res) => {
+      const result = await self.db.readUsers();
+      res.send(JSON.stringify(result));
     });
 
     this.app.get('/getAllRides', async (req, res) => {
-      try {
-        const rides = await self.db.readAllRides();
-        res.send(JSON.stringify(rides));
-      } catch (err) {
-        res.status(500).send(err);
-      }
+      const result = await self.db.readAllRides();
+      res.send(JSON.stringify(result));
+    });    
+
+    this.app.get('/getRide', async (req, res) => {
+      const {date} = req.query;
+      console.log(date);
+      const result = await self.db.getRide(date);
+      res.send(JSON.stringify(result));
+    });     
+
+    this.app.post('/updateRide', async (req, res) => {
+      const {id, destination, date, time, cost, carModel, carColor, seats} = req.query;
+      const result = await self.db.updateRide(id, destination, date, time, cost, carModel, carColor, seats);
+      res.send(JSON.stringify(result));
     });
+
+    this.app.delete('/deleteRide', async (req, res) => {
+      const {id} = req.query;
+      const result = await self.db.deleteRide(id);
+      res.send(JSON.stringify(result));
+    });
+
+    /*
+    app.put('/rides/updateRide', async (request, response) => {
+      const options = request.body;
+      updateRide(response, options.id, options.destination,options.date,options.time,options.cost,options.carModel,options.carColor,options.seats);
+    });
+    
+    app.delete('/rides/deleteRide', async (request, response) => {
+      const options = request.body;
+      deleteRide(response, options.id);
+    })*/
 
   }
   async initDb() {
     this.db = new RideShareDb(this.dburl);
     await this.db.connect();
   }
-  
   async start() {
     await this.initRoutes();
     await this.initDb();
