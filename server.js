@@ -33,6 +33,12 @@ class RideShareServer{
       res.send(JSON.stringify(result));
     });
 
+    this.app.post('/rides/addRides', async (req, res) => {
+      const { driver, destination, date, time, cost, carModel, carColor, seats} = req.query;
+      const result = await self.db.addARide(driver, destination, date, time, cost, carModel, carColor, seats);
+      res.send(JSON.stringify(result))
+    });
+
   }
   async initDb() {
     this.db = new RideShareDb(this.dburl);

@@ -58,6 +58,13 @@ export class RideShareDb {
         else{
             return { "error" : "Username "+ email + " Not Found!" };
         }
-    }   
+    }
+    
+    async addARide(driver, destination, date, time, cost, carModel, carColor, seats) {
+        const res = this.ridesCollection.insertOne({driver: driver, destination: destination, date: date, time: time, cost:cost, carModel:carModel, carColor:carColor, seats:seats});
+        return res;
+    }
+
+    async addRide()
 
 }
