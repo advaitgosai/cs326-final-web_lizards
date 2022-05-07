@@ -26,7 +26,7 @@ createButton.addEventListener('click', async(e)=>{
 
 async function addRides(driver,destination, date, time, cost, carModel, carColor, seats) {
     const response = await fetch(`/rides/addRides?driver=${driver}&destination=${destination}&date=${date}
-    &time=${time}?cost=${cost}&carModel=${carModel}&carColor=${carColor}&seats=${seats}`, {
+    &time=${time}&cost=${cost}&carModel=${carModel}&carColor=${carColor}&seats=${seats}`, {
       method: 'POST',
     });
     const data = await response.json();

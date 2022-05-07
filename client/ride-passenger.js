@@ -42,7 +42,9 @@ const userJson = await readUsers();
 
 var today = new Date();
 
-const id = "cegreene@umass.edu";
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const id = urlParams.get('id');
 
 const reviewKeys = Object.keys(reviewJson);
 

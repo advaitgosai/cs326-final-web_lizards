@@ -60,13 +60,13 @@ class RideShareServer{
       res.send(JSON.stringify(result));
     });     
 
-    this.app.post('/updateRide', async (req, res) => {
-      const {id, destination, date, time, cost, carModel, carColor, seats} = req.query;
-      const result = await self.db.updateRide(id, destination, date, time, cost, carModel, carColor, seats);
+    this.app.put('/rides/updateRide', async (req, res) => {
+      const {id, destination, time, cost, carModel, carColor, seats} = req.query;
+      const result = await self.db.updateRide(id, destination, time, cost, carModel, carColor, seats);
       res.send(JSON.stringify(result));
     });
 
-    this.app.delete('/deleteRide', async (req, res) => {
+    this.app.delete('/rides/deleteRide', async (req, res) => {
       const {id} = req.query;
       const result = await self.db.deleteRide(id);
       res.send(JSON.stringify(result));

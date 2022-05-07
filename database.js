@@ -1,3 +1,4 @@
+import { ObjectID } from 'bson';
 import 'dotenv/config';
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
@@ -5,6 +6,7 @@ import { MongoClient, ServerApiVersion } from 'mongodb';
 export class RideShareDb {
     constructor(dburl) {
       this.dburl = dburl;
+      this.rideID = 0;
     }
     async connect() {
         this.client = await MongoClient.connect(this.dburl, {
@@ -58,9 +60,10 @@ export class RideShareDb {
         else{
             return { "error" : "Username "+ email + " Not Found!" };
         }
-    }
-    
+    } 
+
     async addARide(driver, destination, date, time, cost, carModel, carColor, seats) {
+        date = date.replace(/\s+/g, '');
         const res = this.ridesCollection.insertOne({driver: driver, destination: destination, date: date, time: time, cost:cost, carModel:carModel, carColor:carColor, seats:seats});
         return res;
     }
@@ -90,37 +93,36 @@ export class RideShareDb {
         } 
     }
 
-    async deleteRide(id) {}
+    async deleteRide(id) {
+        const res = this.ridesCollection.deleteOne({_id: ObjectID(id)});
+        return res;
+    }
 
-    async updateRide(id, destination, date, time, cost, carModel, carColor, seats) {
-        if (destination === undefined && date=== undefined && time===undefined && cost===undefined && carModel===undefined && carColor===undefined && seats===undefined) {
+    async updateRide(id, destination, time, cost, carModel, carColor, seats) {
+        if (destination === "" && time==="" && cost==="" && carModel==="" && carColor==="" && seats==="") {
             return { "error" : 'missing info for updating ride' };
         } 
-        /*else {
-            let rides = this.ridesCollection.find({});
+        else {
+            let res;
             if (destination !== "") { 
-                rides[id].destination = destination;
-            }
-            if (date !== "") { 
-                rides[id].date = date;
+                res = this.ridesCollection.updateOne({_id: ObjectID(id)}, {$set:{'destination':destination}});
             }
             if (time !== "") { 
-                rides[id].time = time;
+                res = this.ridesCollection.updateOne({_id: ObjectID(id)}, {$set:{'time':time}});
             }
             if (cost !== "") { 
-                rides[id].cost = cost;
+                res = this.ridesCollection.updateOne({_id: ObjectID(id)}, {$set:{'cost':cost}});
             }
             if (carModel !== "") { 
-                rides[id].carModel = carModel;
+                res = this.ridesCollection.updateOne({_id: ObjectID(id)}, {$set:{'carModel':carModel}});
             }
             if (carColor !== "") { 
-                rides[id].carColor = carColor;
+                res = this.ridesCollection.updateOne({_id: ObjectID(id)}, {$set:{'carColor':carColor}});
             }
             if (seats !== "") { 
-                rides[id].seats = seats;
+                res = this.ridesCollection.updateOne({_id: ObjectID(id)}, {$set:{'seats':seats}});
             }
-            await saveAddRide();
-            response.json({id: id, destination:destination,date:date,time:time,cost:cost,carModel:carModel,carColor,carColor,seats:seats});
-        }*/
+            return res;
+        }
     }
 }
