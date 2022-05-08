@@ -10,7 +10,7 @@ Team Overview:
 | Advait Gosai | [advaitgosai](https://github.com/advaitgosai) |
 
 ## Database
-# MongoDB Collections
+### MongoDB Collections
 
 users document
 {
