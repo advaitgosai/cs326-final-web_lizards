@@ -65,9 +65,10 @@ The delete button removes the specific ride corresponding to the ID from the rid
 
 ## Database
 
+
 ## URL Routes/Mappings
 
-## Autention
+## Authentication/Authorization
 
 ## Division of Labor
 * Corinne - Home Page APIs, Ride Page Passenger APIs, updating both pages with data from rides database
