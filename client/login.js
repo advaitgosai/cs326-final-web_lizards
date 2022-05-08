@@ -7,9 +7,11 @@ loginButton.addEventListener('click', async(e)=>{
     const data = await checkLogin(email.value, password.value);
     if("error" in data){
         output.innerHTML = data["error"];
+
     }
     else{
         output.innerHTML = "You " + email.value + " have successfully logged in!";
+        
     }
 });
 

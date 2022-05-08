@@ -1,13 +1,22 @@
 import express from 'express';
 import { RideShareDb } from './database.js';
+import 'dotenv/config';
+import auth from './auth.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import expressSession from 'express-session';
 
-// let users = {};
-// let rides = {};
-// let reviews = {};
-// const UsersFile = 'users.json';
-// const RideFile = 'rides.json'
-// const ReviewFile = 'reviews.json'
-// let totalRides = 0;
+// We will use __dirname later on to send files back to the client.
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(dirname(__filename));
+
+// Session configuration
+const sessionConfig = {
+  // set this encryption key in Heroku config (never in GitHub)!
+  secret: process.env.SECRET || 'SECRET',
+  resave: false,
+  saveUninitialized: false,
+};
 
 class RideShareServer{
   constructor(dburl) {
@@ -15,10 +24,38 @@ class RideShareServer{
     this.app = express();
     this.app.use('/', express.static('client'));
     this.app.use('/assets', express.static('assets'));
+    // Setup the session middleware
+    this.app.use(expressSession(sessionConfig));
+    // Allow JSON inputs
+    this.app.use(express.json());
+    // Allow URLencoded data
+    this.app.use(express.urlencoded({ extended: true }));
+    auth.configure(app);
   }
+
+  // Our own middleware to check if the user is authenticated
+  checkLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+      // If we are authenticated, run the next route.
+      next();
+    } else {
+      // Otherwise, redirect to the login page.
+      res.redirect('/login');
+    }
+  }
+
+  
+
+
   async initRoutes() {
     const self = this;
     // all of the api routes here 
+
+        // Handle the URL /login (just output the login.html file).
+    this.app.get('/login', (req, res) =>
+      res.sendFile('client/login.html', { root: __dirname })
+    );
+
 
 
     this.app.post('/user/create', async (req, res) => {
@@ -32,6 +69,57 @@ class RideShareServer{
       const result = await self.db.readUser(email,password);
       res.send(JSON.stringify(result));
     });
+
+    this.app.post('/rides/addRides', async (req, res) => {
+      const { driver, destination, date, time, cost, carModel, carColor, seats} = req.query;
+      const result = await self.db.addARide(driver, destination, date, time, cost, carModel, carColor, seats);
+      res.send(JSON.stringify(result))
+    });
+
+    this.app.get('/getReviews', async (req, res) => {
+      const result = await self.db.readReviews();
+      res.send(JSON.stringify(result));
+    });
+
+    this.app.get('/getUsers', async (req, res) => {
+      const result = await self.db.readUsers();
+      res.send(JSON.stringify(result));
+    });
+
+    this.app.get('/getAllRides', async (req, res) => {
+      const result = await self.db.readAllRides();
+      res.send(JSON.stringify(result));
+    });    
+
+    this.app.get('/getRide', async (req, res) => {
+      const {date} = req.query;
+      console.log(date);
+      const result = await self.db.getRide(date);
+      res.send(JSON.stringify(result));
+    });     
+
+    this.app.post('/updateRide', async (req, res) => {
+      const {id, destination, date, time, cost, carModel, carColor, seats} = req.query;
+      const result = await self.db.updateRide(id, destination, date, time, cost, carModel, carColor, seats);
+      res.send(JSON.stringify(result));
+    });
+
+    this.app.delete('/deleteRide', async (req, res) => {
+      const {id} = req.query;
+      const result = await self.db.deleteRide(id);
+      res.send(JSON.stringify(result));
+    });
+
+    /*
+    app.put('/rides/updateRide', async (request, response) => {
+      const options = request.body;
+      updateRide(response, options.id, options.destination,options.date,options.time,options.cost,options.carModel,options.carColor,options.seats);
+    });
+    
+    app.delete('/rides/deleteRide', async (request, response) => {
+      const options = request.body;
+      deleteRide(response, options.id);
+    })*/
 
   }
   async initDb() {

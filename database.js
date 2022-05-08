@@ -58,6 +58,109 @@ export class RideShareDb {
         else{
             return { "error" : "Username "+ email + " Not Found!" };
         }
-    }   
+    }
 
+    findUser(email) {
+        const user = await this.usersCollection.find({"email": email}).toArray();
+        if(user.length === 0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    
+    // Returns true iff the password is the one we have stored (in plaintext = bad
+    // but easy).
+    validatePassword(email, password) {
+        if (!this.findUser(email)) {
+            return false;
+        }
+        const user = await this.usersCollection.find({"email": email}).toArray();
+        if(user.length === 1){
+            if(user[0].password === password){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
+
+    // Add a user to the "database".
+    addUser(email, password) {
+        email = email.replace(/\s+/g, '');
+        if (this.findUser(email)) {
+            return false;
+        }
+        this.users[name] = pwd;
+        return true;
+    }
+    
+    async addARide(driver, destination, date, time, cost, carModel, carColor, seats) {
+        const res = this.ridesCollection.insertOne({driver: driver, destination: destination, date: date, time: time, cost:cost, carModel:carModel, carColor:carColor, seats:seats});
+        return res;
+    }
+
+    async readUsers() {
+        const res = this.usersCollection.find({}).toArray();
+        return res;
+    }
+   
+    async readReviews() {
+        const res = this.reviewsCollection.find({}).toArray();
+        return res;
+    }
+       
+    async readAllRides() {
+        const res = this.ridesCollection.find({}).toArray();
+        return res;
+    }
+
+    async getRide(date) {
+        let result = this.ridesCollection.find({"date": date}).toArray();
+        console.log(result);
+        if (result != {}) {
+            return result;
+          } else {
+            return { "error" : "Rides Not Found" };
+        } 
+    }
+
+    async deleteRide(id) {}
+
+    async updateRide(id, destination, date, time, cost, carModel, carColor, seats) {
+        if (destination === undefined && date=== undefined && time===undefined && cost===undefined && carModel===undefined && carColor===undefined && seats===undefined) {
+            return { "error" : 'missing info for updating ride' };
+        } 
+        /*else {
+            let rides = this.ridesCollection.find({});
+            if (destination !== "") { 
+                rides[id].destination = destination;
+            }
+            if (date !== "") { 
+                rides[id].date = date;
+            }
+            if (time !== "") { 
+                rides[id].time = time;
+            }
+            if (cost !== "") { 
+                rides[id].cost = cost;
+            }
+            if (carModel !== "") { 
+                rides[id].carModel = carModel;
+            }
+            if (carColor !== "") { 
+                rides[id].carColor = carColor;
+            }
+            if (seats !== "") { 
+                rides[id].seats = seats;
+            }
+            await saveAddRide();
+            response.json({id: id, destination:destination,date:date,time:time,cost:cost,carModel:carModel,carColor,carColor,seats:seats});
+        }*/
+    }
 }
+
+
+
