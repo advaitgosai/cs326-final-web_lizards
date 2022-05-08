@@ -50,62 +50,24 @@ const reviewKeys = Object.keys(reviewJson);
 
 const rideKeys = Object.keys(rideJson);
 
-console.log(reviewJson);
-
-let count = 0;
-
 reviewKeys.forEach((element) =>  {
     const rows = document.getElementById("review-table"); 
+
     const item = document.createElement("tr");
     const comment = document.createElement("td");
+    console.log("Data: " + reviewJson[element].comment)
+    const commentText = document.createTextNode(reviewJson[element].comment);
 
-    let driverName;
-
-    rideKeys.forEach((element) =>  {
-      console.log(element);
-      if(rideJson[element]._id === id) {
-        userJson.forEach(x => {
-          if (x["email"] === rideJson[element].driver) {
-            driverName = x["email"];
-            console.log(driverName);
-          }
-        })
-      }
-    });
-    
-    if(reviewJson[element].driver === driverName) {
-      const commentText = document.createTextNode(reviewJson[element].review);
-      comment.appendChild(commentText);
-      item.appendChild(comment);
-      rows.appendChild(item);
-      count++;
-    }
+    comment.appendChild(commentText);
+    item.appendChild(comment);
+    rows.appendChild(item);
 });
-
-if(count === 0) {
-  const rows = document.getElementById("review-table"); 
-  const item = document.createElement("tr");
-  const comment = document.createElement("td");
-  const commentText = document.createTextNode("Driver has no reviews!");
-  comment.appendChild(commentText);
-  item.appendChild(comment);
-  rows.appendChild(item);
-}
 
 rideKeys.forEach((element) =>  {
   console.log(element);
-  if(rideJson[element]._id === id) {
-    let driverName;
-    let driverAbout;
-    userJson.forEach(x => {
-      if (x["email"] == rideJson[element].driver) {
-        driverName = x["firstname"];
-        driverAbout = x["aboutMe"];
-      }
-    })
-
+  if(rideJson[element].driver === id) {
     const cardDate = document.getElementById("card-date");
-    const dateText = document.createTextNode("Date: " + rideJson[element].date);
+    const dateText = document.createTextNode("Date: " + today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate());
 
     const carModel = document.getElementById("car-model");
     const carModelText = document.createTextNode("Car Model: " + rideJson[element].carModel);
@@ -113,27 +75,22 @@ rideKeys.forEach((element) =>  {
     const carColorText = document.createTextNode("Car Color: " + rideJson[element].carColor);
     const carSeats = document.getElementById("car-seats");
     const carSeatsText = document.createTextNode("# of Seats: " + rideJson[element].seats);
-    const cost = document.getElementById("cost");
-    const costText = document.createTextNode("Cost: $" + rideJson[element].cost);
-    const contact = document.getElementById("contact");
-    const contactText = document.createTextNode("Contact Driver: " + rideJson[element].driver + " to book your spot and discuss payment");
+
     const cardTime = document.getElementById("card-time");
     const timeText = document.createTextNode("Ride to " + rideJson[element].destination + " at " + rideJson[element].time);
 
     const card = document.getElementById("card-info"); 
     const title = document.createElement("h5");
-    //console.log(userJson[rideJson[element].driver].firstname)
-
-    const titleText = document.createTextNode("Driver: " + driverName);
+    console.log(userJson[rideJson[element].driver].firstname)
+    const titleText = document.createTextNode("Driver: " + userJson[rideJson[element].driver].firstname);
     const bio = document.createElement("p");
-    //console.log(userJson[rideJson[element].driver].aboutMe)
-    const bioText = document.createTextNode(driverAbout);
+    console.log(userJson[rideJson[element].driver].aboutMe)
+    const bioText = document.createTextNode(userJson[rideJson[element].driver].aboutMe);
 
     carModel.appendChild(carModelText);
     carColor.appendChild(carColorText);
     carSeats.appendChild(carSeatsText);
-    cost.appendChild(costText);
-    contact.appendChild(contactText);
+
     cardDate.appendChild(dateText);
 
     cardTime.appendChild(timeText);

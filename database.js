@@ -125,10 +125,4 @@ export class RideShareDb {
             return res;
         }
     }
-
-    async createReview(email, review) {
-        const res = this.reviewsCollection.insertOne({driver: email, review: review});
-        return res;
-    }
-
 }

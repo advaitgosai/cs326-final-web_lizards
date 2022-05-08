@@ -1,5 +1,6 @@
 const dateValue = document.getElementById("start");
 let rawDate = dateValue.value;
+console.log(rawDate.value)
 const formattedDate = rawDate.substring(5, 7) + rawDate.substring(8, 10) + rawDate.substring(2, 4);
 
 
@@ -18,14 +19,9 @@ async function readRides(date) {
 const json = await readRides(rawDate);
 
 
-let keys = new Array();
-  if(json != undefined) {
-  keys = Object.keys(json);
-}
+const keys = Object.keys(json);
 
-function handler(e){
-  alert(e.target.value);
-}
+
 
 let personalRideKeys = [];
 let otherRideKeys = [];
