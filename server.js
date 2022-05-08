@@ -72,6 +72,12 @@ class RideShareServer{
       res.send(JSON.stringify(result));
     });
 
+    this.app.post('/createReview', async (req, res) => {
+      const {email, review} = req.query;
+      const result = await self.db.createReview(email, review);
+      res.send(JSON.stringify(result));
+    })
+
     /*
     app.put('/rides/updateRide', async (request, response) => {
       const options = request.body;
