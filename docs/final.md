@@ -67,8 +67,19 @@ The delete button removes the specific ride corresponding to the ID from the rid
 
 
 ## URL Routes/Mappings
+Table of all the URL Routes:
+|  Page  |   URL  |
+| ------ | ------ |
+| Login| | |
+| Register | |
+| Home | |
+| Add Ride | |
+| Ride passenger-info | |
+|Ride driver-info| |
+
 
 ## Authentication/Authorization
+
 
 ## Division of Labor
 * Corinne - Home Page APIs, Ride Page Passenger APIs, updating both pages with data from rides database
