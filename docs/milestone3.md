@@ -50,7 +50,7 @@ rides document
 
 
 ## Division of Labor
-* Corinne - Home Page APIs, Ride Page Passenger APIs, updating both pages with data from rides database
-* Sachetan - Add Ride APIs, Creating rides database structure
-* Tarang - Login APIs, Register APIs, Heroku Deployment
-* Advait - Ride Page Driver APIs + Frontend, Ride Page Passenger APIs, Documentation
+* Corinne - Home Page APIs, Ride Page Passenger APIs, updating both pages with data from users and rides database
+* Sachetan - Add Ride APIs, Creating rides database structure, Documentation
+* Tarang - Login APIs, Register APIs, users database implementation, Heroku Deployment
+* Advait - Ride Page Driver APIs, Ride Page Passenger APIs, Add Review API and reviews database implementation
