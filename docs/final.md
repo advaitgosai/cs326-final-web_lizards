@@ -134,4 +134,18 @@ We have implemented the login and register functionalities however weren't entir
 Overall, having the milestones was beneficial to our learning because we were able to build the application step by step and see how the different back and front end pieces of our design needed to work together to accomplish the project. One challenge we faced was deciding what could be done individually and what would be best to work on collectively. We had to learn how to delegate certain portions of the project to different individuals while also keeping track of each other's work in order to make merging our code together easier. In addition, getting familiar with Github commands especially in a team setting was valuable experience while completing this project. 
 
 Looking back to the design process we found that we had a lot more ideas that we wanted to implement for our project than we were able to devlelop, which shows that the implementation of our ideas turned out more difficult than we had anticipated. We had hoped to implement the Google Maps API into the ride information pages to show the potential riders the time and route of each ride, as well as chat functionalities between interested riders and drivers. In addition, the original structure of our application turned out to be quite different than originally planned. After working with the data and discussing how we wanted the data to be handled and displayed, we decided on different database structures that worked better. For example, we separated the reviews of each driver into a separate database rather than including it in the user data.
+
+## Our Rubric
+* Login/Register: 10points
+* Add Ride: 10points
+* Get Rides based on date: 10points
+* Ride Information page - Driver data: 10points
+* Ride Information page - Driver reviews: 10points
+* Ride Information page - Ride data: 10points
+* Add Review: 10points
+* Update Ride: 25points
+* Delete Ride: 10points
+* Presentation/Video: 20points
+* Markdown: 15points
+
   
