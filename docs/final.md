@@ -65,6 +65,45 @@ The delete button removes the specific ride corresponding to the ID from the rid
 
 ## Database
 
+### MongoDB Collections
+
+users document
+```
+{
+  _id: <ObjectId>,
+  firstname: <String>, //first name of user
+  lastname: <String>, //last name of user
+  email: <String>, //user's email
+  password: <String> //user's password
+}
+```
+
+  
+rides document
+```
+{
+  _id: <ObjectId>,
+  driver: <String> //email of driver of specific ride
+  destination: <String> //town of destination
+  date: <String> //day the ride takes place
+  time: <String> //time the ride takes place
+  cost: <String> //cost per passenger in dollars
+  carModel: <String> //make and model of the driver's car
+  carColor: <String> //color of driver's car
+  seats: <integer> //number of seats available in the ride
+}
+```
+  
+ reviews document
+ ```
+{
+  _id: <ObjectId>,
+  driver: <String> //email of driver of specific ride
+  review: <String> //review text 
+}
+```
+
+
 
 ## URL Routes/Mappings
 Table of all the URL Routes:
