@@ -13,6 +13,7 @@ Team Overview:
 ### MongoDB Collections
 
 users document
+```
 {
   _id: <ObjectId>,
   firstname: <String>, //first name of user
@@ -20,8 +21,11 @@ users document
   email: <String>, //user's email
   password: <String> //user's password
 }
+```
+
   
 rides document
+```
 {
   _id: <ObjectId>,
   driver: <String> //email of driver of specific ride
@@ -33,13 +37,16 @@ rides document
   carColor: <String> //color of driver's car
   seats: <integer> //number of seats available in the ride
 }
+```
   
  reviews document
+ ```
 {
   _id: <ObjectId>,
   driver: <String> //email of driver of specific ride
   review: <String> //review text 
 }
+```
 
 
 ## Division of Labor
