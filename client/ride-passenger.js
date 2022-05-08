@@ -54,13 +54,6 @@ console.log(reviewJson);
 
 let count = 0;
 
-const editButton = document.getElementById("edit");
-
-editButton.addEventListener('click', async(e)=>{
-  location.href =`ride-driver.html?id=${id}`;
-});
-
-
 reviewKeys.forEach((element) =>  {
     const rows = document.getElementById("review-table"); 
     const item = document.createElement("tr");
