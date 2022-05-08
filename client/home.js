@@ -85,7 +85,13 @@ personalRideKeys.forEach((element) =>  {
         const model= document.createElement("td");
         const modelText = document.createTextNode(json[element].carModel);
         const seats = document.createElement("td");
+        const infoBtn = document.createElement("a");
         const seatsText = document.createTextNode(json[element].seats);
+        const info = document.createElement("td");
+        const link = "ride-passenger.html?id=" + json[element]._id;
+        infoBtn.href = link;
+        infoBtn.className = "btn btn-primary btn-rounded"
+        const infoText = document.createTextNode("More Info");
 
         dest.appendChild(destText);
         item.appendChild(dest);
@@ -95,6 +101,11 @@ personalRideKeys.forEach((element) =>  {
         item.appendChild(model);
         seats.appendChild(seatsText);
         item.appendChild(seats);
+
+        infoBtn.appendChild(infoText);
+        info.appendChild(infoBtn);
+        item.appendChild(info);
+
         rows.appendChild(item);
 });
 

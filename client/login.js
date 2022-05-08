@@ -9,7 +9,7 @@ loginButton.addEventListener('click', async(e)=>{
         output.innerHTML = data["error"];
     }
     else{
-        output.innerHTML = "You " + email.value + " have successfully logged in!";
+        location.href = "home.html";
     }
 });
 

@@ -13,7 +13,7 @@ registerButton.addEventListener('click', async(e)=>{
     if("error" in data){
       output.innerHTML = "Email already exists!"
     }else{
-      output.innerHTML = "New User has been successfully registered!";
+      location.href = "login.html";
     }
 });
 
