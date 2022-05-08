@@ -111,13 +111,13 @@ rides document
 Table of all the URL Routes:
 |  Page  |   URL  |
 | ------ | ------ |
-| Login| | | 
-| Register | |
-| Home | |
-| Add Ride | |
-| Add Review| |
-| Ride passenger-info | |
-|Ride driver-info| |
+| Login | https://umass-rideshare.herokuapp.com/login.html | 
+| Register | https://umass-rideshare.herokuapp.com/register.html |
+| Home | https://umass-rideshare.herokuapp.com/home.html |
+| Add Ride | https://umass-rideshare.herokuapp.com/addRide.html |
+| Add Review | https://umass-rideshare.herokuapp.com/addReview.html |
+| Ride Information | https://umass-rideshare.herokuapp.com/ride-passenger.html?id=6276fa058689adc310f6809c |
+| Ride Update | https://umass-rideshare.herokuapp.com/ride-driver.html?id=6276fa058689adc310f6809c |
 
 Descriptions of each URL is mentioned in the User Interface section above under each of the screenshot of each URL page.
 
