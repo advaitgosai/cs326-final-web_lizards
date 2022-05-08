@@ -119,7 +119,7 @@ Table of all the URL Routes:
 Descriptions of each URL is mentioned in the User Interface section above under each of the screenshot of each URL page.
 
 ## Authentication/Authorization
-
+We have implemented the login and register functionalities however weren't entirely able to use passport to do the authentication part of it. We experimented different ways of how we can integrate the passport library into our server and database file. 
 
 ## Division of Labor
 * Corinne - Home Page APIs, Ride Page Passenger APIs, updating both pages with data from rides database
