@@ -62,6 +62,8 @@ The delete button removes the specific ride corresponding to the ID from the rid
 * Ride Page - Driver
   * /updateRide : PUT : updates ride corresponding to the id in the rides database (UPDATE)
   * /deleteRide : DELETE : deletes ride corresponding to the id in the rides database (DELETE)
+* Add Review Page 
+  * /createReview : POST : adds a review corresponding to the email in the database
 
 ## Database
 
