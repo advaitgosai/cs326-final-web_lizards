@@ -72,16 +72,11 @@ class RideShareServer{
       res.send(JSON.stringify(result));
     });
 
-    /*
-    app.put('/rides/updateRide', async (request, response) => {
-      const options = request.body;
-      updateRide(response, options.id, options.destination,options.date,options.time,options.cost,options.carModel,options.carColor,options.seats);
-    });
-    
-    app.delete('/rides/deleteRide', async (request, response) => {
-      const options = request.body;
-      deleteRide(response, options.id);
-    })*/
+    this.app.post('/createReview', async (req, res) => {
+      const {email, review} = req.query;
+      const result = await self.db.createReview(email, review);
+      res.send(JSON.stringify(result));
+    })
 
   }
   async initDb() {

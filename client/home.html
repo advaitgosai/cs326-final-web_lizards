@@ -35,7 +35,7 @@
             <!-- Collapsible wrapper -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navbar brand -->
-                <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                <a class="navbar-brand mt-2 mt-lg-0" href="home.html">
                 <img
                     src="../assets/images/URide.png"
                     height="50px"
@@ -46,92 +46,26 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact Us</a>
+                    <a class="nav-link" href="addReview.html">Add Driver Review</a>
                 </li>
                 </ul>
                 <!-- Left links -->
             </div>
             <!-- Collapsible wrapper -->
-        
-            <!-- Right elements -->
-            <div class="d-flex align-items-center">
-                <!-- Icon -->
-                <a class="text-reset me-3" href="#">
-                <i class="fas fa-shopping-cart"></i>
-                </a>
-        
-                <!-- Notifications -->
-                <div class="dropdown">
-                <a
-                    class="text-reset me-3 dropdown-toggle hidden-arrow"
-                    href="#"
-                    id="navbarDropdownMenuLink"
-                    role="button"
-                    data-mdb-toggle="dropdown"
-                    aria-expanded="false"
-                >
-                    <i class="fas fa-bell"></i>
-                    <span class="badge rounded-pill badge-notification bg-danger">1</span>
-                </a>
-                <ul
-                    class="dropdown-menu dropdown-menu-end"
-                    aria-labelledby="navbarDropdownMenuLink"
-                >
-                    <li>
-                    <a class="dropdown-item" href="#">Some news</a>
-                    </li>
-                    <li>
-                    <a class="dropdown-item" href="#">Another news</a>
-                    </li>
-                    <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    </li>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Logout</a>
+                </li>
                 </ul>
-                </div>
-                <!-- Avatar -->
-                <div class="dropdown">
-                <a
-                    class="dropdown-toggle d-flex align-items-center hidden-arrow"
-                    href="#"
-                    id="navbarDropdownMenuAvatar"
-                    role="button"
-                    data-mdb-toggle="dropdown"
-                    aria-expanded="false"
-                >
-                    <img
-                    src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-                    class="rounded-circle"
-                    height="25"
-                    alt="Black and White Portrait of a Man"
-                    loading="lazy"
-                    />
-                </a>
-                <ul
-                    class="dropdown-menu dropdown-menu-end"
-                    aria-labelledby="navbarDropdownMenuAvatar"
-                >
-                    <li>
-                    <a class="dropdown-item" href="#">My profile</a>
-                    </li>
-                    <li>
-                    <a class="dropdown-item" href="#">Settings</a>
-                    </li>
-                    <li>
-                    <a class="dropdown-item" href="#">Logout</a>
-                    </li>
-                </ul>
-                </div>
-            </div>
-            <!-- Right elements -->
             </div>
             <!-- Container wrapper -->
         </nav>
         <!-- Navbar -->
 
-        <h2 class = "home-head"><b>Available Rides</b> on <input class="date" type="date" id="start" name="trip-start" value="2022-07-22" min="2021-01-01" max="2022-12-31"></h2>
+        <h2 class = "home-head">
+            <b>Available Rides</b> on <input class="date" type="date" id="start" name="trip-start" value="2022-07-22" min="2021-01-01" max="2022-12-31">
+            <button class="btn btn-primary btn-rounded" role="button" onClick="window.location.reload();">Change Date</button>
+        </h2>
         
         <!-- Available Rides Table -->
         <div class = box ></div>
@@ -144,7 +78,8 @@
         <div>
 
         <div class="col-md-12 text-center">
-            <button type="button" class="btn btn-primary btn-rounded" data-mdb-ripple-color="dark"><span>&#43;</span> Add Ride</button>
+            <a href="addRide.html" class="btn btn-primary btn-rounded" role="button"><span>&#43;</span> Add Ride</a>
+
         </div>
 
         
