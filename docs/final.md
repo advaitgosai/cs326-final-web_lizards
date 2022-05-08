@@ -113,6 +113,7 @@ Table of all the URL Routes:
 | Register | |
 | Home | |
 | Add Ride | |
+| Add Review| |
 | Ride passenger-info | |
 |Ride driver-info| |
 
