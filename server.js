@@ -70,6 +70,17 @@ class RideShareServer{
       res.send(JSON.stringify(result));
     })
 
+    /*
+    app.put('/rides/updateRide', async (request, response) => {
+      const options = request.body;
+      updateRide(response, options.id, options.destination,options.date,options.time,options.cost,options.carModel,options.carColor,options.seats);
+    });
+    
+    app.delete('/rides/deleteRide', async (request, response) => {
+      const options = request.body;
+      deleteRide(response, options.id);
+    })*/
+
   }
   async initDb() {
     this.db = new RideShareDb(this.dburl);
