@@ -70,13 +70,14 @@ The delete button removes the specific ride corresponding to the ID from the rid
 Table of all the URL Routes:
 |  Page  |   URL  |
 | ------ | ------ |
-| Login| | |
+| Login| | | 
 | Register | |
 | Home | |
 | Add Ride | |
 | Ride passenger-info | |
 |Ride driver-info| |
 
+Descriptions of each URL is mentioned in the User Interface section above under each of the screenshot of each URL page.
 
 ## Authentication/Authorization
 
